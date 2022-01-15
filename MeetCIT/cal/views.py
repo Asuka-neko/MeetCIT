@@ -34,6 +34,7 @@ class CalendarView(generic.ListView):
 def homepage(request):
     earliest_slots_list = Event.objects.order_by('-start_date')
     context = {'earliest_slots_list': earliest_slots_list}
+    print(earliest_slots_list)
 
     return render(request, 'homepage/homepage.html', context)
 

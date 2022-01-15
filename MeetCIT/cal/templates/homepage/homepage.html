@@ -20,11 +20,12 @@
         <p>Mentor name: {{appointment.mentor}}</p>
         <p>Start date: {{appointment.start_date}}</p>
     </li>
+    {% endfor %}
 </ul>
 
 
 {% else %}
 <p>No interview appointment available. Host as a mentor <a href="">now!</a></p>
 
-
+{% endif %}
 {% endblock %}
