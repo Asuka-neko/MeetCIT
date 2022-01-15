@@ -13,5 +13,18 @@
     among CIT students</p>
 
 <!-- TODO: All available timeslots from mentor -->
+{% if earliest_slots_list %}
+<ul>
+    {% for appointment in earliest_slots_list %}
+    <li>
+        <p>Mentor name: {{appointment.mentor}}</p>
+        <p>Start date: {{appointment.start_date}}</p>
+    </li>
+</ul>
+
+
+{% else %}
+<p>No interview appointment available. Host as a mentor <a href="">now!</a></p>
+
 
 {% endblock %}
