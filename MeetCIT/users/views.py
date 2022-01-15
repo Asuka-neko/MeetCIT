@@ -23,3 +23,7 @@ def register(request):
             user = form.save()
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return redirect(reverse("cal:homepage"))
+        else:
+            form = CustomUserCreationForm(None)
+            return render(request, 'users/register.html', {'form': form})
+
