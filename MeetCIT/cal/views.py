@@ -76,6 +76,7 @@ def event(request, event_id=None):
         cur_event = form.save()
         print(cur_event.mentor)
         # assign permission to the author
+        assign_perm('cannot_book', cur_user, cur_event)
         assign_perm('can_edit', cur_user, cur_event)
         return HttpResponseRedirect(reverse('cal:calendar'))
     return render(request, 'cal/event.html', {'form': form})
@@ -102,9 +103,28 @@ def event_edit(request, event_id=None):
             return render(request, 'cal/event_edit.html', {'form': form})
         else:
             context = {
+                'event_id': instance.pk,
                 'mentor': instance.mentor,
                 'zoom_link': instance.zoom_link,
                 'start_time': instance.start_time,
-                'end_time': instance.end_time
+                'end_time': instance.end_time,
+                'is_available': instance.is_available(),
             }
+            print(instance.is_available())
             return render(request, 'cal/event_view.html', context)
+
+
+@login_required
+def booksucess(request, event_id):
+    instance = get_object_or_404(Event, pk=event_id)
+    instance.available = False
+    instance.save()
+    context = {
+        'event_id': instance.pk,
+        'mentor': instance.mentor,
+        'zoom_link': instance.zoom_link,
+        'start_time': instance.start_time,
+        'end_time': instance.end_time,
+        'is_available': instance.is_available(),
+    }
+    return render(request, 'cal/booksuccess.html', context)
