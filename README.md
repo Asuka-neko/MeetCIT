@@ -1,5 +1,8 @@
 # MeetCIT
- 
+Shufan 的branch：
+1. Cloned Repo
+2. Committed Changes
+3. Installed Django/python 3.10
 打工指南：装python3 装django 看一遍django doc（可选）
 
 怎么润：
