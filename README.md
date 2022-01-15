@@ -9,12 +9,13 @@
 3. `python3 manage.py runserver` migrate过一次以后只run这个就行
 
 现在有的页面：
-1. http://localhost:8000/dashboard/ dashboard 可以login logout register 换密码
-2. http://localhost:8000/accounts/login/ login
-3. http://localhost:8000/accounts/password_change/ 换密码
-4. http://localhost:8000/accounts/password_change/done/ 成功换密码
-5. http://localhost:8000/register/ 注册
-6. 一些邮件send reset link相关页面
+1. http://localhost:8000/homepage 首页
+2. http://localhost:8000/dashboard/ dashboard 可以login logout register 换密码
+4. http://localhost:8000/accounts/login/ login
+5. http://localhost:8000/accounts/password_change/ 换密码
+6. http://localhost:8000/accounts/password_change/done/ 成功换密码
+7. http://localhost:8000/register/ 注册
+8. 一些邮件send reset link相关页面
 
 任务列表：
 1. 开任务之前给自己建一个branch
