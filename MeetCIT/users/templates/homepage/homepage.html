@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+<p>Hello, {{ user.username|default:'Guest' }}!</p>
+<div>
+    {% if user.is_authenticated %}
+    <a href="{% url 'users:dashboard'%}"></a>
+    <a href="{% url 'users:logout' %}">Logout</a>
+    {% else %}
+    <a href="{% url 'users:login' %}">Login</a>
+    <a href="{% url 'users:register' %}">Register</a>
+    {% endif %}
+</div>
+<p>Mission Statement: MeetCIT is dedicated to streamling and speeding up the process of scheduling mock-up interviews
+    among CIT students</p>
+
+<!-- TODO: All available timeslots from mentor -->
+
+{% endblock %}
