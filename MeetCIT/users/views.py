@@ -23,8 +23,9 @@ def register(request):
     # If the form is submitted, then the view will be accessed by a POST method. In that case, create a new user.
     elif request.method == "POST":
         form = CustomUserCreationForm(request.POST)
+        print(form.is_valid())
         if form.is_valid():
             # if valid, save the user and log the user in; then redirect to dashboard
             user = form.save()
-            login(request, user)
-            return redirect(reverse("dashboard"))
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+        return redirect(reverse("users:dashboard"))
