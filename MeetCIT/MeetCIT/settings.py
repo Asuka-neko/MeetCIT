@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-hpzb^4e^6zrvka)q41r0un5*ooyz#5byrhn&=kg6&lwo*#9gek'
+SECRET_KEY = 'django-insecure-y=1f=!#80%au1jvewa7*3%=(&%x6l4d5ad1admo_1x@p_j1e!)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'users.apps.UsersConfig',
+    'users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -123,6 +123,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# custom user model, so that the user can log in using email
-AUTH_USER_MODEL = 'users.CustomUser'
-AUTHENTICATION_BACKENDS = ['accounts.backends.EmailBackend']
+# redirect the users
+LOGIN_REDIRECT_URL = "dashboard"
+LOGOUT_REDIRECT_URL = "dashboard"
