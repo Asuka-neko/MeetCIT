@@ -1,6 +1,11 @@
 
 *.pyc
-__pycache__
-MeetCIT/MeetCIT/.DS_Store
-MeetCIT/cal/templates/cal/.DS_Store
-MeetCIT/cal/templates/.DS_Store
+<<<<<<< Updated upstream
+=======
+.DS_Store
+*.pyc
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+*.pyc

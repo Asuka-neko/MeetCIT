@@ -9,10 +9,6 @@ from users.forms import CustomUserCreationForm
 # Create your views here.
 
 
-def dashboard(request):
-    return render(request, "users/dashboard.html")
-
-
 def register(request):
     # If the view is displayed by a browser, then it will be accessed by a GET method.
     if request.method == "GET":
@@ -26,4 +22,4 @@ def register(request):
             # if valid, save the user and log the user in; then redirect to dashboard
             user = form.save()
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-        return redirect(reverse("users:dashboard"))
+        return redirect(reverse("cal:homepage"))

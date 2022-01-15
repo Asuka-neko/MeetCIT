@@ -2,8 +2,8 @@
 <p>Hello, {{ user.username|default:'Guest' }}!</p>
 <div>
     {% if user.is_authenticated %}
-    <a href="{% url 'users:dashboard'%}"></a>
     <a href="{% url 'users:logout' %}">Logout</a>
+    <a href="{% url 'cal:calendar' %}">View Schedules</a>
     {% else %}
     <a href="{% url 'users:login' %}">Login</a>
     <a href="{% url 'users:register' %}">Register</a>
@@ -18,7 +18,7 @@
     {% for appointment in earliest_slots_list %}
     <li>
         <p>Mentor name: {{appointment.mentor}}</p>
-        <p>Start date: {{appointment.start_time}}</p>
+        <p>Start time: {{appointment.start_time}}</p>
     </li>
     {% endfor %}
 </ul>

@@ -126,8 +126,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # redirect the users
-LOGIN_REDIRECT_URL = "users:dashboard"
-LOGOUT_REDIRECT_URL = "users:dashboard"
+LOGIN_REDIRECT_URL = "cal:homepage"
+LOGOUT_REDIRECT_URL = "cal:homepage"
 
 # dummy email service
 EMAIL_HOST = "localhost"
