@@ -15,3 +15,4 @@ MeetCIT/db.sqlite3
 MeetCIT/users/__pycache__/urls.cpython-310.pyc
 MeetCIT/users/__pycache__/views.cpython-310.pyc
 *.pyc
+*.pyc
