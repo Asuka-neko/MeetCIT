@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.utils import timezone
 
 
+
 class Event(models.Model):
     mentor = models.CharField(max_length=200)
     zoom_link = models.TextField()
@@ -30,6 +31,11 @@ class Event(models.Model):
 
     def has_ended(self):
         return (self.end_date < timezone.now)
+
+    class Meta:
+        permissions = (
+            ('can_edit', 'Can edit the event'),
+        )
 
     @property
     def get_html_url(self):

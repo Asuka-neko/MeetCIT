@@ -2,9 +2,10 @@ from datetime import datetime, timedelta, date
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
-from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from guardian.shortcuts import assign_perm
 import calendar
 
 from .models import *
@@ -31,6 +32,7 @@ class CalendarView(generic.ListView):
         return context
 
 
+<<<<<<< HEAD
 def homepage(request):
     earliest_slots_list = Event.objects.order_by('-start_date')
     context = {'earliest_slots_list': earliest_slots_list}
@@ -39,6 +41,8 @@ def homepage(request):
     return render(request, 'homepage/homepage.html', context)
 
 
+=======
+>>>>>>> main
 def get_date(req_month):
     if req_month:
         year, month = (int(x) for x in req_month.split('-'))
@@ -62,15 +66,46 @@ def next_month(d):
 
 
 @login_required
-def event(request, event_id=None):
-    instance = Event()
-    if event_id:
-        instance = get_object_or_404(Event, pk=event_id)
-    else:
-        instance = Event()
+def event(request):
+    cur_user = User.objects.get(pk=request.user.id)
+    initial_data = {
+        'mentor': cur_user
+    }
 
-    form = EventForm(request.POST or None, instance=instance)
+    instance = Event()
+
+    form = EventForm(request.POST or None, instance=instance, initial=initial_data)
     if request.POST and form.is_valid():
-        form.save()
+        cur_event = form.save()
+        # assign permission to the author
+        assign_perm('can_edit', cur_user, cur_event)
         return HttpResponseRedirect(reverse('cal:calendar'))
     return render(request, 'cal/event.html', {'form': form})
+<<<<<<< HEAD
+=======
+
+
+@login_required
+def event_edit(request, event_id=None):
+    if event_id:
+        instance = get_object_or_404(Event, pk=event_id)
+        if request.user.has_perm('cal.can_edit', instance):
+            cur_user = User.objects.get(pk=request.user.id)
+            initial_data = {
+                'mentor': cur_user
+            }
+
+            form = EventForm(request.POST or None, instance=instance, initial=initial_data)
+            if request.POST and form.is_valid():
+                form.save()
+                return HttpResponseRedirect(reverse('cal:calendar'))
+            return render(request, 'cal/event_edit.html', {'form': form})
+        else:
+            context = {
+                'mentor': instance.mentor,
+                'zoom_link': instance.zoom_link,
+                'start_time': instance.start_time,
+                'end_time': instance.end_time
+            }
+            return render(request, 'cal/event_view.html', context)
+>>>>>>> main

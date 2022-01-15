@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'guardian'
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,8 @@ LOGOUT_REDIRECT_URL = "users:dashboard"
 # dummy email service
 EMAIL_HOST = "localhost"
 EMAIL_PORT = 1025
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'guardian.backends.ObjectPermissionBackend',
+)
