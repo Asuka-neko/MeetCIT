@@ -11,3 +11,5 @@ MeetCIT/users/.DS_Store
 MeetCIT/db.sqlite3
 .DS_Store
 *.pyc
+.DS_Store
+*.sqlite3
