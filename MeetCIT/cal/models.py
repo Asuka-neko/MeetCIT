@@ -23,13 +23,13 @@ class Event(models.Model):
         return self.end_time
 
     def is_available(self):
-        return (self.start_time > timezone.now and self.available)
+        return (self.start_time > timezone.now() and self.available)
 
     def has_started(self):
-        return (self.start_time <= timezone.now <= self.end_date)
+        return (self.start_time <= timezone.now() <= self.end_date)
 
     def has_ended(self):
-        return (self.end_time < timezone.now)
+        return (self.end_time < timezone.now())
 
     class Meta:
         permissions = (
