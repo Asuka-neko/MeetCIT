@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.urls import reverse
 from django.utils.safestring import mark_safe
+from django.contrib.auth.decorators import login_required
 import calendar
 
 from .models import *
@@ -45,7 +46,8 @@ def next_month(d):
     next_month = last + timedelta(days=1)
     month = 'month=' + str(next_month.year) + '-' + str(next_month.month)
     return month
-
+    
+@login_required
 def event(request, event_id=None):
     instance = Event()
     if event_id:
