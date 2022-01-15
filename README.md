@@ -11,4 +11,7 @@
 1. 开任务之前给自己建一个branch
 2. http://localhost:8000/login/ 以及 http://localhost:8000/register/ 是两个朴素直男页面，需要小设计师把它弄好看；style相关在`./users/templates/users/`里面的两个html
 3. 酷炫logo（优先度低）
+<<<<<<< HEAD
 
+=======
+>>>>>>> 08619807b6693da9f01b5a06f50dcfbe06be0dbb
