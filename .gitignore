@@ -1,2 +1,7 @@
 
 *.pyc
+<<<<<<< Updated upstream
+=======
+.DS_Store
+*.pyc
+>>>>>>> Stashed changes
