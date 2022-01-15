@@ -74,6 +74,7 @@ def event(request, event_id=None):
                      instance=instance, initial=initial_data)
     if request.POST and form.is_valid():
         cur_event = form.save()
+        print(cur_event.mentor)
         # assign permission to the author
         assign_perm('can_edit', cur_user, cur_event)
         return HttpResponseRedirect(reverse('cal:calendar'))
