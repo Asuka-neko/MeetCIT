@@ -12,7 +12,8 @@
 2. http://localhost:8000/accounts/login/ login
 3. http://localhost:8000/accounts/password_change/ 换密码
 4. http://localhost:8000/accounts/password_change/done/ 成功换密码
-5. http://localhost:8000/accounts/register/ 注册
+5. http://localhost:8000/register/ 注册
+6. 一些邮件send reset link相关页面
 
 任务列表：
 1. 开任务之前给自己建一个branch
