@@ -6,8 +6,8 @@ from django.utils import timezone
 class Event(models.Model):
     mentor = models.CharField(max_length=200)
     zoom_link = models.TextField()
-    start_time = models.DateTimeField('start date')
-    end_time = models.DateTimeField('end date')
+    start_time = models.DateTimeField('start time')
+    end_time = models.DateTimeField('end time')
     avaliable = models.BooleanField(default=True)
 
     def __str__(self):
