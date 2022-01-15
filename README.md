@@ -7,11 +7,14 @@
 2. `python3 manage.py migrate`
 3. `python3 manage.py runserver` migrate过一次以后只run这个就行
 
+现在有的页面：
+1. http://localhost:8000/dashboard/ dashboard 可以login logout register 换密码
+2. http://localhost:8000/accounts/login/ login
+3. http://localhost:8000/accounts/password_change/ 换密码
+4. http://localhost:8000/accounts/password_change/done/ 成功换密码
+5. http://localhost:8000/accounts/register/ 注册
+
 任务列表：
 1. 开任务之前给自己建一个branch
-2. http://localhost:8000/login/ 以及 http://localhost:8000/register/ 是两个朴素直男页面，需要小设计师把它弄好看；style相关在`./users/templates/users/`里面的两个html
+2. 一些朴素直男页面需要小设计师把它弄好看；style相关在`./users/templates/里面
 3. 酷炫logo（优先度低）
-<<<<<<< HEAD
-
-=======
->>>>>>> 08619807b6693da9f01b5a06f50dcfbe06be0dbb
