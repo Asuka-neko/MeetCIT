@@ -8,7 +8,7 @@ class Event(models.Model):
     zoom_link = models.TextField()
     start_time = models.DateTimeField('start time')
     end_time = models.DateTimeField('end time')
-    avaliable = models.BooleanField(default=True)
+    available = models.BooleanField(default=True)
 
     def __str__(self):
         return self.mentor
@@ -16,11 +16,14 @@ class Event(models.Model):
     def __str__(self):
         return self.zoom_link
 
-    def __str__(self):
+    def __datetime__(self):
         return self.start_time
 
-    def __str__(self):
+    def __datetime__(self):
         return self.end_time
+
+    def __bool__(self):
+        return self.available
 
     def is_available(self):
         return (self.start_time > timezone.now() and self.available)
@@ -34,6 +37,7 @@ class Event(models.Model):
     class Meta:
         permissions = (
             ('can_edit', 'Can edit the event'),
+            ('cannot_book', 'Cannot book the event')
         )
 
     @property
