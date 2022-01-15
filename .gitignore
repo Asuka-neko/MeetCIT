@@ -13,3 +13,5 @@ MeetCIT/db.sqlite3
 *.pyc
 .DS_Store
 *.sqlite3
+*.pyc
+*.pyc
