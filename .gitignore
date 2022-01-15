@@ -1,6 +1,6 @@
 
 *.pyc
+__pycache__
 MeetCIT/MeetCIT/.DS_Store
 MeetCIT/cal/templates/cal/.DS_Store
 MeetCIT/cal/templates/.DS_Store
-__pycache__/
