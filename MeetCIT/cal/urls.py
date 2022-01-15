@@ -9,5 +9,6 @@ urlpatterns = [
     re_path(r'^event/edit/(?P<event_id>\d+)/$',
             event_edit, name='event_edit'),
     path('homepage/', homepage, name='homepage'),
-    path('booksucess/', booksucess, name='booksucess'),
+    re_path(r'^booksuccess/(?P<event_id>\d+)/$',
+            booksucess, name='booksuccess'),
 ]

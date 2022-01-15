@@ -17,8 +17,7 @@ Event
   {% if is_available %}
   <p>Availability: Yes</p>
   <form method="post">
-
-    <a class="btn btn-info left" href="{% url 'cal:booksuccess' %}"> Calendar </a>
+    <a class="btn btn-info left" href="{% url 'cal:booksuccess' event_id %}"> BOOK ME! </a>
   </form>
   {% else %}
   <p>Availability: No</p>
