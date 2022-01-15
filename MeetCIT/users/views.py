@@ -5,12 +5,18 @@ from django.urls import reverse
 from users.forms import CustomUserCreationForm
 
 # Create your views here.
+
+
 def dashboard(request):
     return render(request, "users/dashboard.html")
 
 
+def homepage(request):
+    return render(request, "homepage/homepage.html")
+
+
 def register(request):
-    # If the view is displayed by a browser, then it will be accessed by a GET method. 
+    # If the view is displayed by a browser, then it will be accessed by a GET method.
     if request.method == "GET":
         return render(request, "users/register.html", {"form": CustomUserCreationForm})
 
@@ -19,6 +25,6 @@ def register(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             # if valid, save the user and log the user in; then redirect to dashboard
-            user=form.save()
+            user = form.save()
             login(request, user)
             return redirect(reverse("dashboard"))
