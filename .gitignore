@@ -1,0 +1,5 @@
+
+*.pyc
+MeetCIT/MeetCIT/.DS_Store
+MeetCIT/cal/templates/cal/.DS_Store
+MeetCIT/cal/templates/.DS_Store
