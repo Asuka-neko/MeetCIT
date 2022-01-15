@@ -1,3 +1,9 @@
+<style>
+  body{
+    background-color: lightblue;
+  }
+</style>
+<body>
 {% extends 'base.html' %} {% block content %}
 <p>Hello, {{ user.username|default:'Guest' }}!</p>
 <div>
@@ -10,3 +16,4 @@
   {% endif %}
 </div>
 {% endblock %}
+</body>

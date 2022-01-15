@@ -1,4 +1,15 @@
+<style>
+  body{
+    background-color: lightblue;
+  }
+</style>
+<body>
 {% extends 'base.html' %} {% block content %}
+<h1, class ="stripheader">
+    <a>
+        <img src ="MeetCIT.png", width =100>
+    </a>
+<h1>
 <p>Hello, {{ user.username|default:'Guest' }}!</p>
 <div>
     {% if user.is_authenticated %}
@@ -9,7 +20,7 @@
     <a href="{% url 'users:register' %}">Register</a>
     {% endif %}
 </div>
-<p>Mission Statement: MeetCIT is dedicated to streamling and speeding up the process of scheduling mock-up interviews
+<p >Mission Statement: MeetCIT is dedicated to streamling and speeding up the process of scheduling mock-up interviews
     among CIT students</p>
 
 <!-- TODO: All available timeslots from mentor -->
@@ -29,3 +40,4 @@
 
 {% endif %}
 {% endblock %}
+<body>
