@@ -28,10 +28,10 @@ class EventForm(ModelForm):
         if (start_time > end_time):
             self._errors['start_time'] = self.error_class(
                 ['Start time cannot be later than end time!'])
-        if (start_time <= timezone.now):
+        if (start_time <= timezone.now()):
             self._errors['start_time'] = self.error_class(
                 ['Start time cannot be earlier than current time!'])
-        if (end_time <= timezone.now):
+        if (end_time <= timezone.now()):
             self._errors['end_time'] = self.error_class(
                 ['End time cannot be earlier than current time!'])
 
