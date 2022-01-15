@@ -1,3 +1,5 @@
+import sys
+
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.urls import reverse
@@ -9,10 +11,6 @@ from users.forms import CustomUserCreationForm
 
 def dashboard(request):
     return render(request, "users/dashboard.html")
-
-
-def homepage(request):
-    return render(request, "homepage/homepage.html")
 
 
 def register(request):

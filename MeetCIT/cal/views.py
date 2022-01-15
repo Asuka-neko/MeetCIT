@@ -32,6 +32,14 @@ class CalendarView(generic.ListView):
         return context
 
 
+def homepage(request):
+    earliest_slots_list = Event.objects.order_by('-start_date')
+    context = {'earliest_slots_list': earliest_slots_list}
+    print(earliest_slots_list)
+
+    return render(request, 'homepage/homepage.html', context)
+
+
 def get_date(req_month):
     if req_month:
         year, month = (int(x) for x in req_month.split('-'))
@@ -55,7 +63,7 @@ def next_month(d):
 
 
 @login_required
-def event(request):
+def event(request, event_id=None):
     cur_user = User.objects.get(pk=request.user.id)
     initial_data = {
         'mentor': cur_user
@@ -63,7 +71,8 @@ def event(request):
 
     instance = Event()
 
-    form = EventForm(request.POST or None, instance=instance, initial=initial_data)
+    form = EventForm(request.POST or None,
+                     instance=instance, initial=initial_data)
     if request.POST and form.is_valid():
         cur_event = form.save()
         # assign permission to the author
@@ -79,10 +88,14 @@ def event_edit(request, event_id=None):
         if request.user.has_perm('cal.can_edit', instance):
             cur_user = User.objects.get(pk=request.user.id)
             initial_data = {
-                'mentor': cur_user
+                'mentor': cur_user,
+                'zoom_link': instance.zoom_link,
+                'start_time': instance.start_time,
+                'end_time': instance.end_time
             }
-
-            form = EventForm(request.POST or None, instance=instance, initial=initial_data)
+            print(instance.zoom_link)
+            form = EventForm(request.POST or None,
+                             instance=instance, initial=initial_data)
             if request.POST and form.is_valid():
                 form.save()
                 return HttpResponseRedirect(reverse('cal:calendar'))
