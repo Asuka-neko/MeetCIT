@@ -63,7 +63,7 @@ def next_month(d):
 
 
 @login_required
-def event(request):
+def event(request, event_id=None):
     cur_user = User.objects.get(pk=request.user.id)
     initial_data = {
         'mentor': cur_user
@@ -88,9 +88,12 @@ def event_edit(request, event_id=None):
         if request.user.has_perm('cal.can_edit', instance):
             cur_user = User.objects.get(pk=request.user.id)
             initial_data = {
-                'mentor': cur_user
+                'mentor': cur_user,
+                'zoom_link': instance.zoom_link,
+                'start_time': instance.start_time,
+                'end_time': instance.end_time
             }
-
+            print(instance.zoom_link)
             form = EventForm(request.POST or None,
                              instance=instance, initial=initial_data)
             if request.POST and form.is_valid():

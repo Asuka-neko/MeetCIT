@@ -8,3 +8,6 @@
 MeetCIT/users/.DS_Store
 >>>>>>> Stashed changes
 MeetCIT/users/.DS_Store
+MeetCIT/db.sqlite3
+.DS_Store
+*.pyc
