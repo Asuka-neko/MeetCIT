@@ -1,18 +1,10 @@
 
+*.pyc
+<<<<<<< Updated upstream
+=======
 .DS_Store
 *.pyc
 <<<<<<< Updated upstream
-.DS_Store
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
-MeetCIT/users/.DS_Store
->>>>>>> Stashed changes
-MeetCIT/users/.DS_Store
-MeetCIT/db.sqlite3
-.DS_Store
-*.pyc
-.DS_Store
-*.sqlite3
-*.pyc
-*.pyc
-*.pyc
