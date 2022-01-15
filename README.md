@@ -8,17 +8,18 @@
 2. `python3 manage.py migrate`
 3. `python3 manage.py runserver` migrate过一次以后只run这个就行
 
-现在有的页面：
+现在有的页面们：
 1. http://localhost:8000/homepage 首页
-2. http://localhost:8000/dashboard/ dashboard 可以login logout register 换密码
-4. http://localhost:8000/accounts/login/ login
-5. http://localhost:8000/accounts/password_change/ 换密码
-6. http://localhost:8000/accounts/password_change/done/ 成功换密码
-7. http://localhost:8000/register/ 注册
-8. 一些邮件send reset link相关页面
+2. http://localhost:8000/accounts/login/ login
+3. http://localhost:8000/accounts/password_change/ 换密码
+4. http://localhost:8000/accounts/password_change/done/ 成功换密码
+5. http://localhost:8000/register/ 注册
+6. http://localhost:8000/calendar/ 日历首页
 
 任务列表：
-1. 开任务之前给自己建一个branch
-2. 一些朴素直男页面需要小设计师把它弄好看；style相关在`./users/templates/里面
+1. book按钮
+2. unbook按钮
+3. 个人profile页面
+4. 一些朴素直男页面需要小设计师把它弄好看；style相关在`./users/templates/里面
   :> LSF 接了这个任务了
-3. 酷炫logo（优先度低）
+5. 酷炫logo（优先度低）
