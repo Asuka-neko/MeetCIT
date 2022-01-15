@@ -107,8 +107,9 @@ def event_edit(request, event_id=None):
                 'zoom_link': instance.zoom_link,
                 'start_time': instance.start_time,
                 'end_time': instance.end_time,
-                'is_available': instance.is_available
+                'is_available': instance.is_available(),
             }
+            print(instance.is_available())
             return render(request, 'cal/event_view.html', context)
 
 
@@ -116,12 +117,13 @@ def event_edit(request, event_id=None):
 def booksucess(request, event_id):
     instance = get_object_or_404(Event, pk=event_id)
     instance.available = False
+    instance.save()
     context = {
         'event_id': instance.pk,
         'mentor': instance.mentor,
         'zoom_link': instance.zoom_link,
         'start_time': instance.start_time,
         'end_time': instance.end_time,
-        'is_available': instance.is_available
+        'is_available': instance.is_available(),
     }
     return render(request, 'cal/booksuccess.html', context)

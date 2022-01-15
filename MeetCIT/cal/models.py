@@ -25,14 +25,14 @@ class Event(models.Model):
     def __bool__(self):
         return self.available
 
-    def is_available(self):
-        return (self.start_time > timezone.now() and self.available)
+    def is_available(self) -> bool:
+        return self.start_time > timezone.now() and self.available
 
     def has_started(self):
-        return (self.start_time <= timezone.now() <= self.end_date)
+        return self.start_time <= timezone.now() <= self.end_time
 
     def has_ended(self):
-        return (self.end_time < timezone.now())
+        return self.end_time < timezone.now()
 
     class Meta:
         permissions = (
@@ -43,4 +43,9 @@ class Event(models.Model):
     @property
     def get_html_url(self):
         url = reverse('cal:event_edit', args=(self.id,))
-        return f'<a href="{url}"> {self.mentor} </a>'
+        title = self.mentor + " (BOOKED!)"
+        if self.is_available():
+            return f'<a href="{url}"> {self.mentor} </a>'
+        else:
+
+            return f'<a href="{url}"> {title} </a>'
