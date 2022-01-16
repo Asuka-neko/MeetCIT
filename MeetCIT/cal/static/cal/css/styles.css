@@ -1,7 +1,4 @@
 /* Common styles */
-body {
-  font-family: "ptsans", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
 
 .left {
   float: left;
@@ -12,11 +9,22 @@ body {
 }
 
 .btn {
-  outline: none;
-  color: black;
-  background-color: transparent;
-  box-shadow: 0 0 0 0;
-  margin-right: 3px;
+  -webkit-font-smoothing: antialiased;
+  background-color: #33CCCC;
+  border: none;
+  color: #fff;
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  font-weight: 100;
+  text-decoration: none;
+  user-select: none;
+  letter-spacing: 1px;
+  color: white;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  transition: all 0.1s ease-out;
+  margin: 10px
 }
 
 .clearfix {
@@ -38,6 +46,7 @@ body {
 
 /* App styles */
 .title {
+  font-family: 'Montserrat', sans-serif;
   text-align: center;
   margin: 10px;
 }
@@ -46,6 +55,7 @@ body {
   width: 98%;
   margin: auto;
   font-size: 13px;
+  font-family: 'Quattrocento Sans', sans-serif;
 }
 
 .calendar tr, .calendar td {
