@@ -1,12 +1,14 @@
-{% extends 'cal/base.html' %} {% block content %}
-<h2>Login</h2>
+{% extends 'cal/base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<h2 ALIGN='center'>Login</h2>
 
-<form method="post">
-  {% csrf_token %} {{ form.as_p }}
-  <input type="submit" value="Login" />
+<div style="width:500px; margin: auto">
+<form method="post" ALIGN='center'>
+  {% csrf_token %} {% bootstrap_form form %}
+  <input class="btn btn-info" type="submit" value="Login" />
+  <a class="btn btn-info ml-4" href="{% url 'users:password_reset' %}">Reset password</a>
 </form>
+</div>
 
-<a href="{% url 'users:register' %}">Register</a>
-<a href="{% url 'cal:homepage' %}">Back to Homepage</a>
-<a href="{% url 'users:password_reset' %}">Reset password</a>
 {% endblock %}

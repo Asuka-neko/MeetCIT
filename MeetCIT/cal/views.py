@@ -2,6 +2,7 @@ from datetime import datetime, timedelta, date
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
+from django.utils import timezone
 from django.utils.safestring import mark_safe
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -33,8 +34,10 @@ class CalendarView(generic.ListView):
 
 
 def homepage(request):
-    earliest_slots_list = Event.objects.order_by('-start_time')
+    earliest_slots_list = Event.objects.order_by(
+        '-start_time').exclude(available=False).exclude(start_time__lte=timezone.now())
     context = {'earliest_slots_list': earliest_slots_list}
+    print(context)
 
     return render(request, 'homepage/homepage.html', context)
 

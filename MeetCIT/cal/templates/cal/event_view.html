@@ -15,12 +15,12 @@ Event
   <p>start time: {{start_time}}</p>
   <p>end time: {{end_time}}</p>
   {% if is_available %}
-  <p>Availability: Yes</p>
+  <p>Available: Yes</p>
   <form method="post">
     <a class="btn btn-info left" href="{% url 'cal:booksuccess' event_id %}"> BOOK ME! </a>
   </form>
   {% else %}
-  <p>Availability: No</p>
+  <p>Available: No</p>
   {% endif %}
 </div>
 

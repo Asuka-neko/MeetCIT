@@ -1,3 +1,5 @@
+{% extends 'cal/base.html' %}
+
 {% block content %}
 <p>Hello, {{ user.username|default:'Guest' }}!</p>
 <div>
@@ -16,17 +18,21 @@
 {% if earliest_slots_list %}
 <p>Currently available interview appointments:</p>
 <ul>
-    {% for appointment in earliest_slots_list %}
+    {% for query in earliest_slots_list %}
     <li>
-        <p>Mentor name: {{appointment.mentor}}</p>
-        <p>Start time: {{appointment.start_time}}</p>
+        <p>Mentor name: {{query.mentor}}</p>
+        <p>Start time: {{query.start_time}}</p>
+        <form method="post">
+            <a class="btn btn-info left" href="{% url 'cal:booksuccess' query.pk %}"> BOOK ME NOW! </a>
+        </form>
+
     </li>
     {% endfor %}
 </ul>
 
 
 {% else %}
-<p>No interview appointment available. Host as a mentor <a href="">now!</a></p>
+<p>No interview appointment available. Host as a mentor <a href="{% url 'cal:event_new' %}">now!</a></p>
 
 {% endif %}
 {% endblock %}
