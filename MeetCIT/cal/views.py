@@ -117,8 +117,10 @@ def event_edit(request, event_id=None):
 
 @login_required
 def booksucess(request, event_id):
+    cur_user = User.objects.get(pk=request.user.id)
     instance = get_object_or_404(Event, pk=event_id)
     instance.available = False
+    instance.mentee = cur_user
     instance.save()
     context = {
         'event_id': instance.pk,
