@@ -5,7 +5,7 @@
 {% if earliest_slots_list %}
 <div class="row ml-5 mt-3">
     <div class="col-sm-6">
-        <p>Currently available appointments:</p>
+        <h2>Currently available appointments:</h2>
         {% for query in earliest_slots_list %}
         {% if query.mentee != user %}
         <div class="card mt-4 w-50 text-center" style="width: 18rem;">
