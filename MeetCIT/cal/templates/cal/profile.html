@@ -1,67 +1,61 @@
 {% extends 'cal/base.html' %}
 
 {% block content %}
-<div class='ml-3'>
+<p class='col ml-5'>
     Welcome back, {{user}}!
-</div>
+</p>
 
-<div>
+<div class="row ml-5 mt-3">
+<div class="col-sm-6">
     {% if host_event_upcoming %}
-    <div class='ml-3'>Upcoming host appointments:</div>
-    <div>
-        <ul>
+    <p>Upcoming host appointments:</p>
+    <div class="card mt-4 w-50 text-center" style="width: 18rem;">
+        <div class="card-body">
             {% for query in host_event_upcoming %}
             {% if query.mentee %}
-            <li>
-                <p class='ml-3'>Attendee name: {{query.mentee}}</p>
-                <p class='ml-3'>Start time: {{query.start_time}}</p>
-                <p class='ml-3'>Start time: {{query.end_time}}</p>
-                <p class='ml-3'>Zoom link: {{query.zoom_link}}</p>
-                <a class="btn btn-info left" href="{% url 'cal:cancelhostsuccess' query.pk %}"> Cancel Appointment </a>
-            </li>
+                <p class="card-title title">Attendee name: {{query.mentee}}</p>
+                <p class="card-text text-muted">Start time: {{query.start_time}}</p>
+                <p class="card-text text-muted">End time: {{query.end_time}}</p>
+                <p class="card-text">Zoom link: {{query.zoom_link}}</p>
+                <a class="btn btn-info" href="{% url 'cal:cancelhostsuccess' query.pk %}"> Cancel Appointment </a>
             {% else %}
-            <li>
-                <p class='ml-3'>Appointment not booked yet!</p>
-                <p class='ml-3'>Start time: {{query.start_time}}</p>
-                <p class='ml-3'>Start time: {{query.end_time}}</p>
-                <a class="btn btn-info left" href="{% url 'cal:cancelhostsuccess' query.pk %}"> Cancel Appointment </a>
-            </li>
+                <p class="card-title title">Appointment not booked yet!</p>
+                <p class="card-text text-muted">Start time: {{query.start_time}}</p>
+                <p class="card-text text-muted">End time: {{query.end_time}}</p>
+                <a class="btn btn-info" href="{% url 'cal:cancelhostsuccess' query.pk %}"> Cancel Appointment </a>
             {% endif %}
             {% endfor %}
-        </ul>
+        </div>
     </div>
 
     {% else %}
-    <div class='ml-3'>No upcoming host appointment. Go <a href="{% url 'cal:event_new' %}">host an appointment</a> now!
-    </div>
+    <p>No upcoming host appointment. Go <a href="{% url 'cal:event_new' %}">host an appointment</a> now!
+    </p>
 
     {% endif %}
 
     {% if host_event_expired %}
-    <div class='ml-3'>Past host appointments:</div>
-    <div>
-        <ul>
+    <div class="card mt-4 w-50 text-center" style="width: 18rem;">
+        <p>Past host appointments:</p>
             {% for query in host_event_expired %}
             {% if query.mentee %}
-            <li>
-                <p class='ml-3'>Attendee name: {{query.mentee}}</p>
-                <p class='ml-3'>Start time: {{query.start_time}}</p>
-                <p class='ml-3'>End time: {{query.end_time}}</p>
-            </li>
+            <div class="card-body">
+                <p class="card-title title">Attendee name: {{query.mentee}}</p>
+                <p class="card-text text-muted">Start time: {{query.start_time}}</p>
+                <p class="card-text text-muted">End time: {{query.end_time}}</p>
+            </div>
             {% else %}
-            <li>
-                <p class='ml-3'>Appointment was not booked!</p>
-                <p class='ml-3'>Start time: {{query.start_time}}</p>
-                <p class='ml-3'>Start time: {{query.end_time}}</p>
-            </li>
+            <div class="card-body">
+                <p class="card-title title">Appointment was not booked!</p>
+                <p class="card-text text-muted">Start time: {{query.start_time}}</p>
+                <p cclass="card-text text-muted">End time: {{query.end_time}}</p>
+            </div>
             {% endif %}
             {% endfor %}
-        </ul>
-    </div>
     {% endif %}
-</div>
+    </div>
 
-<div>
+<div class="col-sm-6">
     {% if user_event_upcoming %}
     <div class='ml-3'>Upcoming appointments:</div>
     <div>
@@ -98,6 +92,8 @@
         </ul>
     </div>
     {% endif %}
+</div>
+</div>
 </div>
 
 {% endblock %}
