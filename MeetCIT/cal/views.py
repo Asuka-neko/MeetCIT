@@ -37,7 +37,7 @@ class CalendarView(generic.ListView):
 def catalogue(request):
     cur_user = User.objects.get(pk=request.user.id)
     earliest_slots_list = Event.objects.order_by(
-        '-start_time').exclude(host=cur_user).exclude(available=False).exclude(start_time__lte=timezone.now())
+        'start_time').exclude(host=cur_user).exclude(available=False).exclude(start_time__lte=timezone.now())
     context = {'earliest_slots_list': earliest_slots_list}
 
     return render(request, 'homepage/catalogue.html', context)
@@ -146,14 +146,14 @@ def profile(request):
     cur_user = User.objects.get(pk=request.user.id)
 
     host_event_expired = Event.objects.filter(host=cur_user).order_by(
-        '-start_time').exclude(start_time__gte=timezone.now())
+        'start_time').exclude(start_time__gte=timezone.now())
     host_event_upcoming = Event.objects.filter(host=cur_user).order_by(
-        '-start_time').exclude(start_time__lte=timezone.now())
+        'start_time').exclude(start_time__lte=timezone.now())
 
     user_event_expired = Event.objects.filter(mentee=cur_user).order_by(
-        '-start_time').exclude(start_time__gte=timezone.now())
+        'start_time').exclude(start_time__gte=timezone.now())
     user_event_upcoming = Event.objects.filter(mentee=cur_user).order_by(
-        '-start_time').exclude(start_time__lte=timezone.now())
+        'start_time').exclude(start_time__lte=timezone.now())
 
     context = {'host_event_expired': host_event_expired,
                'host_event_upcoming': host_event_upcoming,
