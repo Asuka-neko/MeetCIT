@@ -6,6 +6,7 @@
 <p>Currently available interview appointments:</p>
 <ul>
     {% for query in earliest_slots_list %}
+    {% if query.mentee != user %}
     <li>
         <p>Mentor name: {{query.mentor}}</p>
         <p>Start time: {{query.start_time}}</p>
@@ -14,6 +15,7 @@
         </form>
 
     </li>
+    {% endif %}
     {% endfor %}
 </ul>
 

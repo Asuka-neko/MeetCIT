@@ -36,7 +36,7 @@ class CalendarView(generic.ListView):
 def catalogue(request):
     cur_user = User.objects.get(pk=request.user.id)
     earliest_slots_list = Event.objects.order_by(
-        '-start_time').exclude(mentee=cur_user).exclude(available=False).exclude(start_time__lte=timezone.now())
+        '-start_time').exclude(mentor=cur_user).exclude(available=False).exclude(start_time__lte=timezone.now())
     context = {'earliest_slots_list': earliest_slots_list}
 
     return render(request, 'homepage/catalogue.html', context)
