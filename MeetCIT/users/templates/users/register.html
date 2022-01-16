@@ -4,11 +4,9 @@
 <h2 ALIGN='center'>Register</h2>
 
 <div style="width:500px; margin: auto">
-<form method="post" ALIGN='center' class="form">
+<form method="post" ALIGN='center'>
   {% csrf_token %} {% bootstrap_form form %}
-    <div>
   <input class="btn btn-info" type="submit" value="Register" />
-    </div>
 </form>
 </div>
 
