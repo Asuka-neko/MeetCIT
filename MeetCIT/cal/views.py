@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta, date
+from django import forms
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
@@ -76,6 +77,7 @@ def event(request, event_id=None):
     form = EventForm(request.POST or None,
                      instance=instance, initial=initial_data)
     if request.POST and form.is_valid():
+
         cur_event = form.save()
         # assign permission to the author
         assign_perm('cannot_book', cur_user, cur_event)
