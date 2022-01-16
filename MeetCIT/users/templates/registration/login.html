@@ -4,10 +4,10 @@
 <h2 ALIGN='center' class="title">Login</h2>
 
 <div style="width:500px; margin: auto">
-<form method="post" ALIGN='center'>
-  {% csrf_token %} {% bootstrap_form form %}
-  <input class="btn btn-info" type="submit" value="Login" />
-</form>
+  <form method="post" ALIGN='center'>
+    {% csrf_token %} {% bootstrap_form form %}
+    <input class="btn btn-info" type="submit" value="Login" />
+  </form>
 </div>
 
 {% endblock %}
