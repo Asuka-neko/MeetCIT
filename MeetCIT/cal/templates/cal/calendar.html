@@ -6,9 +6,17 @@ Calendar
 
 {% block content %}
 <div class="clearfix">
-	<a class="btn btn-info left" href="{% url 'cal:calendar' %}?{{ prev_month }}"> Previous Month </a>
-	<a class="btn btn-info right" href="{% url 'cal:calendar' %}?{{ next_month }}"> Next Month </a>
-	<a class="btn btn-info right" href="{% url 'cal:event_new' %}"> Be a Mentor! </a>
+	<a class="btn btn-info left" href="{% url 'cal:calendar' %}?{{ prev_month }}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+  <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+</svg> Previous Month </a>
+	<a class="btn btn-info right" href="{% url 'cal:calendar' %}?{{ next_month }}"> Next Month <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+  <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+</svg></a>
+	<a class="btn btn-info right" href="{% url 'cal:event_new' %}"> Be a Mentor! <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+  <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+  <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+  <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+</svg></a>
 </div>
 
 {{ calendar }}

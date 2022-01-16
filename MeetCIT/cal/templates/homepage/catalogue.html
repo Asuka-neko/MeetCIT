@@ -1,24 +1,13 @@
 {% extends 'cal/base.html' %}
 
 {% block content %}
-<p>Hello, {{ user.username|default:'Guest' }}!</p>
-<div>
-    {% if user.is_authenticated %}
-    <a href="{% url 'users:logout' %}">Logout</a>
-    <a href="{% url 'cal:calendar' %}">View Schedules</a>
-    {% else %}
-    <a href="{% url 'users:login' %}">Login</a>
-    <a href="{% url 'users:register' %}">Register</a>
-    {% endif %}
-</div>
-<p>Mission Statement: MeetCIT is dedicated to streamling and speeding up the process of scheduling mock-up interviews
-    among CIT students</p>
 
-<!-- TODO: All available timeslots from mentor -->
 {% if earliest_slots_list %}
+<div class="ml-3">
 <p>Currently available interview appointments:</p>
 <ul>
     {% for query in earliest_slots_list %}
+    {% if query.mentee != user %}
     <li>
         <p>Mentor name: {{query.mentor}}</p>
         <p>Start time: {{query.start_time}}</p>
@@ -27,12 +16,15 @@
         </form>
 
     </li>
+    {% endif %}
     {% endfor %}
 </ul>
-
+</div>
 
 {% else %}
+<div class="ml-3">
 <p>No interview appointment available. Host as a mentor <a href="{% url 'cal:event_new' %}">now!</a></p>
+</div>
 
 {% endif %}
 {% endblock %}

@@ -17,3 +17,5 @@ MeetCIT/users/__pycache__/views.cpython-310.pyc
 *.pyc
 *.pyc
 *.pyc
+MeetCIT/.DS_Store
+.DS_Store
