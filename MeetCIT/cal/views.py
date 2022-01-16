@@ -116,7 +116,7 @@ def event_edit(request, event_id=None):
 
 
 @login_required
-def booksucess(request, event_id):
+def booksuccess(request, event_id):
     cur_user = User.objects.get(pk=request.user.id)
     instance = get_object_or_404(Event, pk=event_id)
     instance.available = False
@@ -131,3 +131,35 @@ def booksucess(request, event_id):
         'is_available': instance.is_available(),
     }
     return render(request, 'cal/booksuccess.html', context)
+
+
+@login_required
+def profile(request):
+    cur_user = User.objects.get(pk=request.user.id)
+    user_event_expired = Event.objects.filter(mentee=cur_user).order_by(
+        '-start_time').exclude(start_time__gte=timezone.now())
+    user_event_upcoming = Event.objects.filter(mentee=cur_user).order_by(
+        '-start_time').exclude(start_time__lte=timezone.now())
+
+    context = {'user_event_expired': user_event_expired,
+               'user_event_upcoming': user_event_upcoming,
+               }
+
+    return render(request, 'cal/profile.html', context)
+
+
+@login_required
+def cancelsuccess(request, event_id):
+    instance = get_object_or_404(Event, pk=event_id)
+    instance.available = True
+    instance.mentee = None
+    instance.save()
+    context = {
+        'event_id': instance.pk,
+        'mentor': instance.mentor,
+        'zoom_link': instance.zoom_link,
+        'start_time': instance.start_time,
+        'end_time': instance.end_time,
+        'is_available': instance.is_available(),
+    }
+    return render(request, 'cal/cancelsuccess.html', context)
