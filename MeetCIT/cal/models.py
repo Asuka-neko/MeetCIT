@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 
 class Event(models.Model):
-    mentor = models.CharField(max_length=200)
+    host = models.CharField(max_length=200)
     mentee = models.ForeignKey(
         User, on_delete=models.DO_NOTHING, null=True, blank=True)
     zoom_link = models.TextField()
@@ -14,7 +14,7 @@ class Event(models.Model):
     available = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.mentor
+        return self.host
 
     def __str__(self):
         return self.zoom_link
@@ -46,10 +46,10 @@ class Event(models.Model):
     @property
     def get_html_url(self):
         url = reverse('cal:event_edit', args=(self.id,))
-        title = self.mentor + " (BOOKED!)"
-        title_expired = self.mentor + " (EXPIRED!)"
+        title = self.host + " (BOOKED!)"
+        title_expired = self.host + " (EXPIRED!)"
         if self.is_available():
-            return f'<a href="{url}"> {self.mentor} </a>'
+            return f'<a href="{url}"> {self.host} </a>'
         else:
             if self.mentee == None:
                 return f'<a href="{url}"> {title_expired} </a>'

@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta, date
+from django import forms
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
@@ -36,7 +37,7 @@ class CalendarView(generic.ListView):
 def catalogue(request):
     cur_user = User.objects.get(pk=request.user.id)
     earliest_slots_list = Event.objects.order_by(
-        '-start_time').exclude(mentor=cur_user).exclude(available=False).exclude(start_time__lte=timezone.now())
+        'start_time').exclude(host=cur_user).exclude(available=False).exclude(start_time__lte=timezone.now())
     context = {'earliest_slots_list': earliest_slots_list}
 
     return render(request, 'homepage/catalogue.html', context)
@@ -68,7 +69,7 @@ def next_month(d):
 def event(request, event_id=None):
     cur_user = User.objects.get(pk=request.user.id)
     initial_data = {
-        'mentor': cur_user
+        'host': cur_user
     }
 
     instance = Event()
@@ -76,6 +77,7 @@ def event(request, event_id=None):
     form = EventForm(request.POST or None,
                      instance=instance, initial=initial_data)
     if request.POST and form.is_valid():
+
         cur_event = form.save()
         print(cur_event.mentor)
         # assign permission to the author
@@ -92,7 +94,7 @@ def event_edit(request, event_id=None):
         if request.user.has_perm('cal.can_edit', instance):
             cur_user = User.objects.get(pk=request.user.id)
             initial_data = {
-                'mentor': cur_user,
+                'host': cur_user,
                 'zoom_link': instance.zoom_link,
                 'start_time': instance.start_time,
                 'end_time': instance.end_time,
@@ -110,7 +112,7 @@ def event_edit(request, event_id=None):
             can_cancel = (cur_user == instance.mentee)
             context = {
                 'event_id': instance.pk,
-                'mentor': instance.mentor,
+                'host': instance.host,
                 'zoom_link': instance.zoom_link,
                 'start_time': instance.start_time,
                 'end_time': instance.end_time,
@@ -131,7 +133,7 @@ def booksuccess(request, event_id):
     instance.save()
     context = {
         'event_id': instance.pk,
-        'mentor': instance.mentor,
+        'host': instance.host,
         'zoom_link': instance.zoom_link,
         'start_time': instance.start_time,
         'end_time': instance.end_time,
@@ -144,15 +146,15 @@ def booksuccess(request, event_id):
 def profile(request):
     cur_user = User.objects.get(pk=request.user.id)
 
-    host_event_expired = Event.objects.filter(mentor=cur_user).order_by(
-        '-start_time').exclude(start_time__gte=timezone.now())
-    host_event_upcoming = Event.objects.filter(mentor=cur_user).order_by(
-        '-start_time').exclude(start_time__lte=timezone.now())
+    host_event_expired = Event.objects.filter(host=cur_user).order_by(
+        'start_time').exclude(start_time__gte=timezone.now())
+    host_event_upcoming = Event.objects.filter(host=cur_user).order_by(
+        'start_time').exclude(start_time__lte=timezone.now())
 
     user_event_expired = Event.objects.filter(mentee=cur_user).order_by(
-        '-start_time').exclude(start_time__gte=timezone.now())
+        'start_time').exclude(start_time__gte=timezone.now())
     user_event_upcoming = Event.objects.filter(mentee=cur_user).order_by(
-        '-start_time').exclude(start_time__lte=timezone.now())
+        'start_time').exclude(start_time__lte=timezone.now())
 
     context = {'host_event_expired': host_event_expired,
                'host_event_upcoming': host_event_upcoming,
@@ -171,7 +173,7 @@ def cancelsuccess(request, event_id):
     instance.save()
     context = {
         'event_id': instance.pk,
-        'mentor': instance.mentor,
+        'host': instance.host,
         'zoom_link': instance.zoom_link,
         'start_time': instance.start_time,
         'end_time': instance.end_time,
@@ -184,7 +186,7 @@ def cancelsuccess(request, event_id):
 def cancelhostsuccess(request, event_id):
     instance = get_object_or_404(Event, pk=event_id)
     context = {
-        'mentor': instance.mentor,
+        'host': instance.host,
         'mentee': instance.mentee,
         'start_time': instance.start_time,
     }
