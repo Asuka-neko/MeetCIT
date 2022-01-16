@@ -1,5 +1,5 @@
 from django.urls import re_path, path
-from .views import booksuccess, index, CalendarView, event, event_edit, catalogue, profile, cancelsuccess
+from .views import booksuccess, index, CalendarView, event, event_edit, catalogue, profile, cancelsuccess, cancelhostsuccess
 
 app_name = 'cal'
 urlpatterns = [
@@ -15,4 +15,6 @@ urlpatterns = [
     path('profile/', profile, name='profile'),
     re_path(r'^cancelsuccess/(?P<event_id>\d+)/$',
             cancelsuccess, name='cancelsuccess'),
+    re_path(r'^cancelhostsuccess/(?P<event_id>\d+)/$',
+            cancelhostsuccess, name='cancelhostsuccess'),
 ]

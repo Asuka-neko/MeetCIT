@@ -3,23 +3,29 @@
 {% block content %}
 
 {% if earliest_slots_list %}
+<div class="row ml-5 mt-3">
+    <div class="col-sm-6">
 <p>Currently available interview appointments:</p>
-<ul>
     {% for query in earliest_slots_list %}
-    <li>
-        <p>Mentor name: {{query.mentor}}</p>
-        <p>Start time: {{query.start_time}}</p>
+    {% if query.mentee != user %}
+    <div class="card mt-4 w-50 text-center" style="width: 18rem;">
+        <div class="card-body">
+        <p class="card-title title">Mentor name: {{query.mentor}}</p>
+        <p class="card-text text-muted">Start time: {{query.start_time}}</p>
         <form method="post">
-            <a class="btn btn-info left" href="{% url 'cal:booksuccess' query.pk %}"> BOOK ME NOW! </a>
+            <a class="btn btn-info" href="{% url 'cal:booksuccess' query.pk %}"> BOOK ME NOW! </a>
         </form>
-
-    </li>
+        </div>
+    </div>
+    {% endif %}
     {% endfor %}
-</ul>
-
+    </div>
+</div>
 
 {% else %}
+<div class="ml-3 mt-3">
 <p>No interview appointment available. Host as a mentor <a href="{% url 'cal:event_new' %}">now!</a></p>
+</div>
 
 {% endif %}
 {% endblock %}

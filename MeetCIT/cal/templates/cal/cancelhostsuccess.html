@@ -1,0 +1,17 @@
+{% extends 'cal/base.html' %}
+
+{% block content %}
+{% if mentee %}
+<div class='ml-3'>
+    <p>
+        Your host appointment with {{ mentee }} at {{ start_time }} has been successfully canceled.
+    </p>
+</div>
+{% else %}
+<div class='ml-3'>
+    <p>
+        Your host appointment at {{ start_time }} has been successfully canceled.
+    </p>
+</div>
+{% endif %}
+{% endblock %}

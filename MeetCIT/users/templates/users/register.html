@@ -1,15 +1,13 @@
 {% extends 'cal/base.html' %}
 {% load bootstrap4 %}
 {% block content %}
-<h2 ALIGN='center'>Register</h2>
+<h2 ALIGN='center' class="title">Register</h2>
 
 <div style="width:500px; margin: auto">
-<form method="post" ALIGN='center' class="form">
-  {% csrf_token %} {% bootstrap_form form %}
-    <div>
-  <input class="btn btn-info" type="submit" value="Register" />
-    </div>
-</form>
+  <form method="post" ALIGN='center'>
+    {% csrf_token %} {% bootstrap_form form %}
+    <input class="btn btn-info" type="submit" value="Register" />
+  </form>
 </div>
 
 {% endblock %}

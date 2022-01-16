@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Event(models.Model):
     mentor = models.CharField(max_length=200)
     mentee = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True, blank=True)
+        User, on_delete=models.DO_NOTHING, null=True, blank=True)
     zoom_link = models.TextField()
     start_time = models.DateTimeField('start time')
     end_time = models.DateTimeField('end time')
