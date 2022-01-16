@@ -130,9 +130,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = "cal:homepage"
 LOGOUT_REDIRECT_URL = "cal:homepage"
 
-# dummy email service
-EMAIL_HOST = "localhost"
-EMAIL_PORT = 1025
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',

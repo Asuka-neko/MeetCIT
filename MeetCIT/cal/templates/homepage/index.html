@@ -1,0 +1,24 @@
+{% load static %}
+<link href='https://fonts.googleapis.com/css?family=Quattrocento+Sans:400,700,400italic|Montserrat:400,700|Cardo:400italic|Advent+Pro:100' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+      type="text/css"
+      href="{% static 'cal/css/index.css' %}">
+
+  <!-- HOME -->
+  <div id="home" class="content-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1>The Power of CIT Connection</h1>
+          <h5>MeetCIT is where you can meet your fellow CIT friends and ask for academic advice, mock interview, or just casual meetup!</h5>
+        </div>
+      </div>
+      <div>
+<a href="{% url 'users:login' %}" class="button">Login</a>
+<a href="{% url 'users:register' %}" class="button">Register</a></div>
+
+    </div>
+  </div>
+
+

@@ -15,7 +15,7 @@ from .forms import EventForm
 
 
 def index(request):
-    return HttpResponse('hello')
+    return render(request, 'homepage/index.html')
 
 
 class CalendarView(generic.ListView):
