@@ -33,13 +33,12 @@ class CalendarView(generic.ListView):
         return context
 
 
-def homepage(request):
+def catalogue(request):
     earliest_slots_list = Event.objects.order_by(
         '-start_time').exclude(available=False).exclude(start_time__lte=timezone.now())
     context = {'earliest_slots_list': earliest_slots_list}
-    print(context)
 
-    return render(request, 'homepage/homepage.html', context)
+    return render(request, 'homepage/catalogue.html', context)
 
 
 def get_date(req_month):

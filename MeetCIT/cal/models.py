@@ -5,10 +5,14 @@ from django.utils import timezone
 
 class Event(models.Model):
     mentor = models.CharField(max_length=200)
+    mentee = models.CharField(max_length=200)
     zoom_link = models.TextField()
     start_time = models.DateTimeField('start time')
     end_time = models.DateTimeField('end time')
     available = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.mentee
 
     def __str__(self):
         return self.mentor

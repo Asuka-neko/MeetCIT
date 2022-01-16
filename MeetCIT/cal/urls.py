@@ -1,5 +1,5 @@
 from django.urls import re_path, path
-from .views import booksucess, index, CalendarView, event, homepage, event_edit
+from .views import booksucess, index, CalendarView, event, event_edit, catalogue
 
 app_name = 'cal'
 urlpatterns = [
@@ -11,5 +11,5 @@ urlpatterns = [
     path('homepage/', index, name='homepage'),
     re_path(r'^booksuccess/(?P<event_id>\d+)/$',
             booksucess, name='booksuccess'),
-    path('profile/', homepage, name='profile')
+    path('catalogue/', catalogue, name='catalogue')
 ]
