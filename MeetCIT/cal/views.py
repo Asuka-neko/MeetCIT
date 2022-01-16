@@ -137,12 +137,18 @@ def booksuccess(request, event_id):
 @login_required
 def profile(request):
     cur_user = User.objects.get(pk=request.user.id)
+    host_event_expired = Event.objects.filter(mentor=cur_user).order_by(
+        '-start_time').exclude(start_time__gte=timezone.now())
+    host_event_upcoming = Event.objects.filter(mentor=cur_user).order_by(
+        '-start_time').exclude(start_time__lte=timezone.now())
     user_event_expired = Event.objects.filter(mentee=cur_user).order_by(
         '-start_time').exclude(start_time__gte=timezone.now())
     user_event_upcoming = Event.objects.filter(mentee=cur_user).order_by(
         '-start_time').exclude(start_time__lte=timezone.now())
 
-    context = {'user_event_expired': user_event_expired,
+    context = {'host_event_expired': host_event_expired,
+               'host_event_upcoming': host_event_upcoming,
+               'user_event_expired': user_event_expired,
                'user_event_upcoming': user_event_upcoming,
                }
 
@@ -164,3 +170,15 @@ def cancelsuccess(request, event_id):
         'is_available': instance.is_available(),
     }
     return render(request, 'cal/cancelsuccess.html', context)
+
+
+@login_required
+def cancelhostsuccess(request, event_id):
+    instance = get_object_or_404(Event, pk=event_id)
+    context = {
+        'mentor': instance.mentor,
+        'mentee': instance.mentee,
+        'start_time': instance.start_time,
+    }
+    instance.delete()
+    return render(request, 'cal/cancelhostsuccess.html', context)

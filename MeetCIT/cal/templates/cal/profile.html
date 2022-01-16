@@ -1,38 +1,93 @@
 {% extends 'cal/base.html' %}
 
 {% block content %}
-<p class='ml-3'>
+<div class='ml-3'>
     Welcome back, {{user}}!
-</p>
+</div>
 
-{% if user_event_expired %}
-<p class='ml-3'>Past interview appointments:</p>
-<ul>
-    {% for query in user_event_expired %}
-    <li>
-        <p class='ml-3'>Mentor name: {{query.mentor}}</p>
-        <p class='ml-3'>Start time: {{query.start_time}}</p>
-    </li>
-    {% endfor %}
-</ul>
-{% endif %}
+<div>
+    {% if host_event_upcoming %}
+    <div class='ml-3'>Upcoming host appointments:</div>
+    <div>
+        <ul>
+            {% for query in host_event_upcoming %}
+            {% if query.mentee %}
+            <li>
+                <p class='ml-3'>Attendee name: {{query.mentee}}</p>
+                <p class='ml-3'>Start time: {{query.start_time}}</p>
+                <p class='ml-3'>Start time: {{query.end_time}}</p>
+                <a class="btn btn-info left" href="{% url 'cal:cancelhostsuccess' query.pk %}"> Cancel Appointment </a>
+            </li>
+            {% else %}
+            <li>
+                <p class='ml-3'>Appointment not booked yet!</p>
+                <p class='ml-3'>Start time: {{query.start_time}}</p>
+                <p class='ml-3'>Start time: {{query.end_time}}</p>
+                <a class="btn btn-info left" href="{% url 'cal:cancelhostsuccess' query.pk %}"> Cancel Appointment </a>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
 
-{% if user_event_upcoming %}
-<p class='ml-3'>Upcoming interview appointments:</p>
-<ul>
-    {% for query in user_event_upcoming %}
-    <li>
-        <p class='ml-3'>Mentor name: {{query.mentor}}</p>
-        <p class='ml-3'>Start time: {{query.start_time}}</p>
-        <a class="btn btn-info left" href="{% url 'cal:cancelsuccess' query.pk %}"> Cancel Appointment </a>
-    </li>
-    {% endfor %}
-</ul>
+    {% else %}
+    <div class='ml-3'>No upcoming appointment. Go <a href="{% url 'cal:event_new' %}">host as an appointment</a> now!
+    </div>
 
-{% else %}
-<p class='ml-3'>No interview appointment history. Go <a href="{% url 'cal:catalogue' %}">book an appointment</a> or <a
-        href="{% url 'cal:event_new' %}">host as a mentor</a> now!</p>
+    {% endif %}
 
-{% endif %}
+    {% if host_event_expired %}
+    <div class='ml-3'>Past host appointments:</div>
+    <div>
+        <ul>
+            {% for query in host_event_expired %}
+            <li>
+                <p class='ml-3'>Attendee name: {{query.mentee}}</p>
+                <p class='ml-3'>Start time: {{query.start_time}}</p>
+                <p class='ml-3'>End time: {{query.end_time}}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+
+<div>
+    {% if user_event_upcoming %}
+    <div class='ml-3'>Upcoming appointments:</div>
+    <div>
+        <ul>
+            {% for query in user_event_upcoming %}
+            <li>
+                <p class='ml-3'>Mentor name: {{query.mentor}}</p>
+                <p class='ml-3'>Start time: {{query.start_time}}</p>
+                <p class='ml-3'>Start time: {{query.end_time}}</p>
+                <a class="btn btn-info left" href="{% url 'cal:cancelsuccess' query.pk %}"> Cancel Appointment </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    {% else %}
+    <div class='ml-3'>No upcoming appointment. Go <a href="{% url 'cal:catalogue' %}">book an appointment</a> now!
+    </div>
+
+    {% endif %}
+
+    {% if user_event_expired %}
+    <div class='ml-3'>Past appointments:</div>
+    <div>
+        <ul>
+            {% for query in user_event_expired %}
+            <li>
+                <p class='ml-3'>Mentor name: {{query.mentor}}</p>
+                <p class='ml-3'>Start time: {{query.start_time}}</p>
+                <p class='ml-3'>Start time: {{query.end_time}}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
 
 {% endblock %}
