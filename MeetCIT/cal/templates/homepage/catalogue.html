@@ -3,6 +3,7 @@
 {% block content %}
 
 {% if earliest_slots_list %}
+<div class="ml-3">
 <p>Currently available interview appointments:</p>
 <ul>
     {% for query in earliest_slots_list %}
@@ -16,10 +17,12 @@
     </li>
     {% endfor %}
 </ul>
-
+</div>
 
 {% else %}
+<div class="ml-3">
 <p>No interview appointment available. Host as a mentor <a href="{% url 'cal:event_new' %}">now!</a></p>
+</div>
 
 {% endif %}
 {% endblock %}
