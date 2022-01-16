@@ -16,6 +16,7 @@
                 <p class='ml-3'>Attendee name: {{query.mentee}}</p>
                 <p class='ml-3'>Start time: {{query.start_time}}</p>
                 <p class='ml-3'>Start time: {{query.end_time}}</p>
+                <p class='ml-3'>Zoom link: {{query.zoom_link}}</p>
                 <a class="btn btn-info left" href="{% url 'cal:cancelhostsuccess' query.pk %}"> Cancel Appointment </a>
             </li>
             {% else %}
@@ -41,11 +42,19 @@
     <div>
         <ul>
             {% for query in host_event_expired %}
+            {% if query.mentee %}
             <li>
                 <p class='ml-3'>Attendee name: {{query.mentee}}</p>
                 <p class='ml-3'>Start time: {{query.start_time}}</p>
                 <p class='ml-3'>End time: {{query.end_time}}</p>
             </li>
+            {% else %}
+            <li>
+                <p class='ml-3'>Appointment was not booked!</p>
+                <p class='ml-3'>Start time: {{query.start_time}}</p>
+                <p class='ml-3'>Start time: {{query.end_time}}</p>
+            </li>
+            {% endif %}
             {% endfor %}
         </ul>
     </div>
@@ -62,6 +71,7 @@
                 <p class='ml-3'>Mentor name: {{query.mentor}}</p>
                 <p class='ml-3'>Start time: {{query.start_time}}</p>
                 <p class='ml-3'>Start time: {{query.end_time}}</p>
+                <p class='ml-3'>Zoom link: {{query.zoom_link}}</p>
                 <a class="btn btn-info left" href="{% url 'cal:cancelsuccess' query.pk %}"> Cancel Appointment </a>
             </li>
             {% endfor %}

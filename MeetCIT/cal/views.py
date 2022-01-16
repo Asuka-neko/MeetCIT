@@ -100,12 +100,13 @@ def event_edit(request, event_id=None):
 
             form = EventForm(request.POST or None,
                              instance=instance, initial=initial_data)
-            print(form)
             if request.POST and form.is_valid():
                 form.save()
                 return HttpResponseRedirect(reverse('cal:calendar'))
             return render(request, 'cal/event_edit.html', {'form': form, 'instance': initial_data})
         else:
+            cur_user = User.objects.get(pk=request.user.id)
+            can_cancel = (cur_user == instance.mentee)
             context = {
                 'event_id': instance.pk,
                 'mentor': instance.mentor,
@@ -113,8 +114,10 @@ def event_edit(request, event_id=None):
                 'start_time': instance.start_time,
                 'end_time': instance.end_time,
                 'is_available': instance.is_available(),
+                'can_cancel': can_cancel,
             }
             print(instance.is_available())
+            print(timezone.now())
             return render(request, 'cal/event_view.html', context)
 
 

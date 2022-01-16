@@ -47,8 +47,11 @@ class Event(models.Model):
     def get_html_url(self):
         url = reverse('cal:event_edit', args=(self.id,))
         title = self.mentor + " (BOOKED!)"
+        title_expired = self.mentor + " (EXPIRED!)"
         if self.is_available():
             return f'<a href="{url}"> {self.mentor} </a>'
         else:
-
-            return f'<a href="{url}"> {title} </a>'
+            if self.mentee == None:
+                return f'<a href="{url}"> {title_expired} </a>'
+            else:
+                return f'<a href="{url}"> {title} </a>'
