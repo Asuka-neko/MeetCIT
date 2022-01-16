@@ -5,6 +5,69 @@
       type="text/css"
       href="{% static 'cal/css/index.css' %}">
 
+<!--NavBarStyle--->
+<style>
+.navibar{
+  width:100%;
+  height: 40px;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: center;
+  padding: 0px;
+}
+.navibar > li{
+  display: inline-block;
+  min-width: 120px;
+  text-align: center;
+  height: 100%;
+  font-family: 'Lato', sans-serif;
+  line-height: 40px;
+}
+
+.navibar li ul li a{
+ font-size: 12px;
+}
+
+.navibar li ul li a:hover{
+ color: #7499D0 !important;
+}
+
+
+.navibar > li:hover{
+  background: #33cccc;
+}
+
+
+.navibar > li:hover > a{
+  color: pink;
+}
+.navibar li > a{
+  height: 100%;
+  width: 100%;
+  color: black;
+  display: block;
+  text-decoration: none;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@keyframes fadein{
+  50%{opacity: 0;}
+  50%{opacity: 1;}
+}
+
+</style>
+<!--NavBar-->
+<div class="container-fluid">
+<ul class="navibar",id="nav">
+  <li><a href="http://localhost:8000/homepage/">Home</a></li>
+  <li><a href="http://localhost:8000/homepage/">About MeetCIT</a></li>
+  <li><a href="{% url 'cal:catalogue' %}">Appointment</a></li>
+  <li><a href="{% url 'cal:profile' %}">Profile</a></li>
+  <li><a href="http://localhost:8000/homepage/">Contact</a></li>
+
+</ul>
+</div>
   <!-- HOME -->
   <div id="home" class="content-section">
     <div class="container">
