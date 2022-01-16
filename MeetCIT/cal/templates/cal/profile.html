@@ -40,7 +40,7 @@
         {% endif %}
 
         {% if host_event_expired %}
-        <h2>Past host appointments:</h2>
+        <h2 class='mt-3'>Past host appointments:</h2>
         {% for query in host_event_expired %}
         {% if query.mentee %}
         <div class="card mt-4 w-50 text-center" style="width: 18rem;">
@@ -86,7 +86,7 @@
         {% endif %}
 
         {% if user_event_expired %}
-        <h2>Past appointments:</h2>
+        <h2 class='mt-3'>Past appointments:</h2>
         {% for query in user_event_expired %}
         <div class="card mt-4 w-50 text-center" style="width: 18rem;">
             <div class="card-body">
