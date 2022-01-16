@@ -137,10 +137,12 @@ def booksuccess(request, event_id):
 @login_required
 def profile(request):
     cur_user = User.objects.get(pk=request.user.id)
+
     host_event_expired = Event.objects.filter(mentor=cur_user).order_by(
         '-start_time').exclude(start_time__gte=timezone.now())
     host_event_upcoming = Event.objects.filter(mentor=cur_user).order_by(
         '-start_time').exclude(start_time__lte=timezone.now())
+
     user_event_expired = Event.objects.filter(mentee=cur_user).order_by(
         '-start_time').exclude(start_time__gte=timezone.now())
     user_event_upcoming = Event.objects.filter(mentee=cur_user).order_by(
