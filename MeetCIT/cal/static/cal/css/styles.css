@@ -10,11 +10,11 @@
 
 .btn {
   -webkit-font-smoothing: antialiased;
-  background-color: #33CCCC;
+  background-color: #33cccc;
   border: none;
   color: #fff;
   display: inline-block;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 15px;
   font-weight: 100;
   text-decoration: none;
@@ -24,7 +24,7 @@
   padding: 10px 20px;
   text-transform: uppercase;
   transition: all 0.1s ease-out;
-  margin: 10px
+  margin: 10px;
 }
 
 .clearfix {
@@ -35,7 +35,9 @@
   margin: auto;
 }
 
-.form input, .form select, .form textarea {
+.form input,
+.form select,
+.form textarea {
   border-radius: 5px;
   border: 1px solid #17a2b8;
   outline: none;
@@ -46,7 +48,7 @@
 
 /* App styles */
 .title {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   text-align: center;
   margin: 10px;
 }
@@ -55,10 +57,11 @@
   width: 98%;
   margin: auto;
   font-size: 13px;
-  font-family: 'Quattrocento Sans', sans-serif;
+  font-family: "Quattrocento Sans", sans-serif;
 }
 
-.calendar tr, .calendar td {
+.calendar tr,
+.calendar td {
   border: 1px solid black;
 }
 
@@ -96,5 +99,13 @@ a {
 }
 
 p {
-  font-size: 20px
+  font-size: 20px;
+}
+
+h1 {
+  font-family: "Quattrocento Sans", sans-serif;
+}
+
+h2 {
+  font-family: "Quattrocento Sans", sans-serif;
 }
