@@ -94,15 +94,17 @@ def event_edit(request, event_id=None):
                 'mentor': cur_user,
                 'zoom_link': instance.zoom_link,
                 'start_time': instance.start_time,
-                'end_time': instance.end_time
+                'end_time': instance.end_time,
+                'event_id': instance.pk,
             }
-            print(instance.zoom_link)
+
             form = EventForm(request.POST or None,
                              instance=instance, initial=initial_data)
+            print(form)
             if request.POST and form.is_valid():
                 form.save()
                 return HttpResponseRedirect(reverse('cal:calendar'))
-            return render(request, 'cal/event_edit.html', {'form': form})
+            return render(request, 'cal/event_edit.html', {'form': form, 'instance': initial_data})
         else:
             context = {
                 'event_id': instance.pk,
