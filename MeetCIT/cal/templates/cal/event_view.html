@@ -21,6 +21,7 @@ Event
   </form>
   {% else %}
   <p>Available: No</p>
+  <a class="btn btn-info left" href="{% url 'cal:cancelsuccess' event_id %}"> Cancel Appointment </a>
   {% endif %}
 </div>
 

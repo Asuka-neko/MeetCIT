@@ -127,12 +127,9 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # redirect the users
-LOGIN_REDIRECT_URL = "cal:homepage"
-LOGOUT_REDIRECT_URL = "cal:homepage"
+LOGIN_REDIRECT_URL = "cal:profile"
+LOGOUT_REDIRECT_URL = "cal:profile"
 
-# dummy email service
-EMAIL_HOST = "localhost"
-EMAIL_PORT = 1025
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
