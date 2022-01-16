@@ -7,10 +7,9 @@ Event
 {% block content %}
 
 <div class="ml-3">
-  <p>mentor: {{mentor}}</p>
-  <p>zoom_link: {{zoom_link}}</p>
-  <p>start time: {{start_time}}</p>
-  <p>end time: {{end_time}}</p>
+  <p>Host name: {{mentor}}</p>
+  <p>Start time: {{start_time}}</p>
+  <p>End time: {{end_time}}</p>
   {% if is_available %}
   <p>Available: Yes</p>
   <form method="post">
@@ -18,7 +17,11 @@ Event
   </form>
   {% else %}
   <p>Available: No</p>
+
+  {% if can_cancel %}
   <a class="btn btn-info left" href="{% url 'cal:cancelsuccess' event_id %}"> Cancel Appointment </a>
+  {% endif %}
+
   {% endif %}
 </div>
 
