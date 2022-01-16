@@ -23,13 +23,13 @@ Event
 
 <form method="post">
     {% csrf_token %}
-    <table class="form form-table">
+    <table class="form form-table" align="center">
         {{ form }}
-        <tr>
-            <td colspan="2"><button type="submit" class="btn btn-info right"> Submit </button></td>
-        </tr>
     </table>
+        <div class="row" style="margin-left:200px">
+            <div class="col"><a class="btn btn-info right" href="{% url 'cal:cancelhostsuccess' instance.event_id %}"> Cancel Appointment</a></div>
+            <div class="col"><button type="submit" class="btn btn-info"> Submit </button></div>
+        </div>
 </form>
-<a class="btn btn-info left" href="{% url 'cal:cancelhostsuccess' instance.event_id %}"> Cancel Appointment</a>
 
 {% endblock %}
