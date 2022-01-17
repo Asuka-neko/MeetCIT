@@ -8,7 +8,7 @@ Works just like any other registration system! Unique and case-sensitive usernam
 
 ### Host/Attendee Appointment System
 
-The user can either host an appointment as a host, or participate in an appointment as an attendee. When a user successfully host an appointment, the appointment will show up on the calendar and the catalogue free for other users to book. 
+The user can either host an appointment as a host, or participate in an appointment as an attendee. Only the host and the attendee can view the zoom link. When a user successfully host an appointment, the appointment will show up on the calendar and the catalogue free for other users to book. 
 
 At the moment, appointments are one-to-one, meaning an appointment can only be hosted by one user and booked by another unique user. 
 
@@ -26,7 +26,7 @@ The user can also choose to cancel appointment either as a host or attendee. Can
 
 ### Calendar System
 
-The user can also choose to view all appointments on the calendar page, where all appointments, listed as the host name following by the status of the event, show up on a calendar view.
+The user can also choose to view all appointments on the calendar page, where all appointments, listed as the host name followed by the status of the event, show up on a calendar view.
 
 By clicking the appointment, the user will be re-directed to an event view page. When logged in as the host of the event, the user can choose to edit the event details or cancel the appointment. When logged in as a different user, the user can choose to book the appointment, or cancel existing appointment. 
 
@@ -40,18 +40,18 @@ If the user wishes to directly search for a host, they can use the search box lo
 
 ## Underlying Structure
 
-MeetCIT is built using the Django web framework (4.0.1) with Python as the back-end programming language, and website is styled using CSS Bootstrap-4, especially the navigation bar. We use the registration system that comes default with Django, and import the Django Guardians package for differentiating different user's permission to book/change/cancel a certain appointment. 
+MeetCIT is built using the Django web framework (4.0.1) with Python as the back-end programming language, and website is styled using CSS Bootstrap-4, especially the navigation bar. We use the registration system that comes default with Django, and import the Django Guardians package for differentiating user's permission to book/change/cancel a certain appointment. 
 
 Calendar functionalities are realized with pieces of codes from [django-calendar](https://github.com/huiwenhw/django-calendar) GitHub project made by GitHub user [huiwenhw](https://github.com/huiwenhw). Our greatest appreciation and gratitude goes to huiwenhw.
 
 ## Planning Features
 
-**Appointment theme:** a new attribute to the appointment, can be set to advisory, mock interview, meetup or other to facilitate the filtering of appointments.
+**Appointment theme/tag:** a new attribute to the appointment, can be set to advisory, mock interview, meetup or other themes/tags to facilitate the filtering of appointments.
 
-**User profile that all visitors can inspect:** Including self-introduction, strength and personal interests.
+**User profile that all visitors can inspect:** Including self-introduction, strengths and personal interests to better introduce the host to other users.
 
 **One-to-multiple appointments:** the host can choose the number of attendees they prefer to accommodate.
 
 **Filter options on calendar and catalogue:** given a timeframe, certain host or theme of the appointment, the user can filter out the appointments they want to attend the most.
 
-**Fuzzy search: **the user can search for theme, approximation of name, or other attributes rather than an exact host name.
+**Fuzzy search: **the user can search for theme/tag, approximation of name, or other attributes rather than an exact host name.
