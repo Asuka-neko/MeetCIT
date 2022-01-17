@@ -1,0 +1,111 @@
+/* Common styles */
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.btn {
+  -webkit-font-smoothing: antialiased;
+  background-color: #33cccc;
+  border: none;
+  color: #fff;
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: 100;
+  text-decoration: none;
+  user-select: none;
+  letter-spacing: 1px;
+  color: white;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  transition: all 0.1s ease-out;
+  margin: 10px;
+}
+
+.clearfix {
+  margin: 15px;
+}
+
+.form {
+  margin: auto;
+}
+
+.form input,
+.form select,
+.form textarea {
+  border-radius: 5px;
+  border: 1px solid #17a2b8;
+  outline: none;
+  background: none;
+  padding: 5px;
+  width: 100%;
+}
+
+/* App styles */
+.title {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  margin: 10px;
+}
+
+.calendar {
+  width: 98%;
+  margin: auto;
+  font-size: 13px;
+  font-family: "Quattrocento Sans", sans-serif;
+}
+
+.calendar tr,
+.calendar td {
+  border: 1px solid black;
+}
+
+.calendar th {
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.calendar td {
+  width: 200px;
+  height: 150px;
+  padding: 20px 0px 0px 5px;
+}
+
+.month {
+  font-size: 25px;
+}
+
+.date {
+  font-size: 16px;
+}
+
+ul {
+  height: 100%;
+  padding: 0px 5px 0px 20px;
+}
+
+li {
+  font-size: 20px;
+}
+
+a {
+  color: #17a2b8;
+}
+
+p {
+  font-size: 20px;
+}
+
+h1 {
+  font-family: "Quattrocento Sans", sans-serif;
+}
+
+h2 {
+  font-family: "Quattrocento Sans", sans-serif;
+}
