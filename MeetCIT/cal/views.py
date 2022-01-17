@@ -23,7 +23,8 @@ class SearchResultsView(ListView):
 
     def get_queryset(self):
         query = self.request.GET.get('q')
-        event_list = Event.objects.filter(host=query).order_by('start_time').exclude(available=False).exclude(start_time__lte=timezone.now())
+        cur_user = User.objects.get(pk=self.request.user.id)
+        event_list = Event.objects.filter(host=query).order_by('start_time').exclude(available=False).exclude(start_time__lte=timezone.now()).exclude(host=cur_user)
         return event_list
 
 class CalendarView(generic.ListView):
