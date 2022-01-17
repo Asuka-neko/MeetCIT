@@ -42,7 +42,7 @@ If the user wishes to directly search for a host, they can use the search box lo
 
 MeetCIT is built using the Django web framework (4.0.1) with Python as the back-end programming language, and website is styled using CSS Bootstrap-4, especially the navigation bar. We use the registration system that comes default with Django, and import the Django Guardians package for differentiating different user's permission to book/change/cancel a certain appointment. 
 
-Calendar functionalities are realized with pieces of codes from [django-calendar](https://github.com/huiwenhw/django-calendar) GitHub project made by GitHub user huiwenhw. Our greatest appreciation and gratitude goes to huiwenhw.
+Calendar functionalities are realized with pieces of codes from [django-calendar](https://github.com/huiwenhw/django-calendar) GitHub project made by GitHub user [huiwenhw](https://github.com/huiwenhw). Our greatest appreciation and gratitude goes to huiwenhw.
 
 ## Planning Features
 
