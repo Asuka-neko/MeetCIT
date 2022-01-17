@@ -38,7 +38,7 @@ The catalogue page lists all available appointment current user can book in asce
 
 If the user wishes to directly search for a host, they can use the search box located at the upper right corner using exact username. All available appointments by the exact username will show up in ascending time order as cards, where the user can book.
 
-## Underlying Structure
+## Tech Stacks
 
 MeetCIT is built using the Django web framework (4.0.1) with Python as the back-end programming language, and website is styled using CSS Bootstrap-4, especially the navigation bar. We use the registration system that comes default with Django, and import the Django Guardians package for differentiating user's permission to book/change/cancel a certain appointment. 
 
