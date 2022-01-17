@@ -20,7 +20,7 @@ On the left, the user can find their host appointments and past host appointment
 
 If no appointments are present, the user will be prompted to either host a new event or book an appointment on the catalogue page.
 
-All cards include relevent host/attendee name, start/end time and the zoom link provided by the host, offering a clear dashboard view of events. 
+All cards include relevant host/attendee name, start/end time and the zoom link provided by the host, offering a clear dashboard view of events. 
 
 The user can also choose to cancel appointment either as a host or attendee. Cancelled host appointments will be permanent deleted from the database, but cancelled attendee appointments will become available again for other users to book.
 
@@ -48,9 +48,9 @@ Calendar functionalities are realized with pieces of codes from [django-calendar
 
 **Appointment theme:** a new attribute to the appointment, can be set to advisory, mock interview, meetup or other to facilitate the filtering of appointments.
 
-**User profile that all visitors can inspect:** Including self-introduction, strengh and personal interests.
+**User profile that all visitors can inspect:** Including self-introduction, strength and personal interests.
 
-**One-to-multiple appointments:** the host can choose the number of attendees they prefer to accomodate.
+**One-to-multiple appointments:** the host can choose the number of attendees they prefer to accommodate.
 
 **Filter options on calendar and catalogue:** given a timeframe, certain host or theme of the appointment, the user can filter out the appointments they want to attend the most.
 
