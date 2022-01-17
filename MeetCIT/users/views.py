@@ -1,9 +1,6 @@
-import sys
-
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.urls import reverse
-from django.contrib import messages
 
 from users.forms import CustomUserCreationForm
 

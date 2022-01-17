@@ -1,12 +1,10 @@
 from datetime import datetime, timedelta, date
-from django import forms
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.views import generic
-from django.utils import timezone
 from django.utils.safestring import mark_safe
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from django.views.generic import ListView
 from guardian.shortcuts import assign_perm
 import calendar
 
@@ -18,6 +16,15 @@ from .forms import EventForm
 def index(request):
     return render(request, 'homepage/index.html')
 
+
+class SearchResultsView(ListView):
+    model = Event
+    template_name = 'homepage/search_results.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        event_list = Event.objects.filter(host=query).order_by('start_time').exclude(available=False).exclude(start_time__lte=timezone.now())
+        return event_list
 
 class CalendarView(generic.ListView):
     model = Event

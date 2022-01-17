@@ -61,6 +61,11 @@
         </ul>
         <ul class="navbar-nav ml-auto">
           {% if user.is_authenticated %}
+          <li class="nav-item mr-3">
+            <form action="{% url 'cal:search_results' %}" method="get" class="d-flex">
+              <input name="q" type="text" placeholder="I want to meet ... " aria-label="Search" class="form-control me-2">
+            </form>
+          </li>
           <li class="nav-item">
             <a class="nav-item nav-link" href="{% url 'cal:profile' %}"
               >Profile</a
