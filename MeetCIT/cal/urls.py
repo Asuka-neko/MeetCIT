@@ -7,7 +7,7 @@ urlpatterns = [
     re_path(r'^event/new/$', event, name='event_new'),
     re_path(r'^event/edit/(?P<event_id>\d+)/$',
             event_edit, name='event_edit'),
-    path('homepage/', index, name='homepage'),
+    path('', index, name='homepage'),
     re_path(r'^booksuccess/(?P<event_id>\d+)/$',
             booksuccess, name='booksuccess'),
     path('catalogue/', catalogue, name='catalogue'),
