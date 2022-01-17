@@ -24,8 +24,10 @@ class SearchResultsView(ListView):
     def get_queryset(self):
         query = self.request.GET.get('q')
         cur_user = User.objects.get(pk=self.request.user.id)
-        event_list = Event.objects.filter(host=query).order_by('start_time').exclude(available=False).exclude(start_time__lte=timezone.now()).exclude(host=cur_user)
+        event_list = Event.objects.filter(host=query).order_by('start_time').exclude(
+            available=False).exclude(start_time__lte=timezone.now()).exclude(host=cur_user)
         return event_list
+
 
 class CalendarView(generic.ListView):
     model = Event
@@ -43,12 +45,17 @@ class CalendarView(generic.ListView):
 
 
 def catalogue(request):
-    cur_user = User.objects.get(pk=request.user.id)
-    earliest_slots_list = Event.objects.order_by(
-        'start_time').exclude(host=cur_user).exclude(available=False).exclude(start_time__lte=timezone.now())
-    context = {'earliest_slots_list': earliest_slots_list}
-
-    return render(request, 'homepage/catalogue.html', context)
+    if request.user.is_authenticated:
+        cur_user = User.objects.get(pk=request.user.id)
+        earliest_slots_list = Event.objects.order_by(
+            'start_time').exclude(host=cur_user).exclude(available=False).exclude(start_time__lte=timezone.now())
+        context = {'earliest_slots_list': earliest_slots_list}
+        return render(request, 'homepage/catalogue.html', context)
+    else:
+        earliest_slots_list = Event.objects.order_by(
+            'start_time').exclude(available=False).exclude(start_time__lte=timezone.now())
+        context = {'earliest_slots_list': earliest_slots_list}
+        return render(request, 'homepage/catalogue.html', context)
 
 
 def get_date(req_month):
