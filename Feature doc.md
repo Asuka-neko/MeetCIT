@@ -55,3 +55,9 @@ Calendar functionalities are realized with pieces of codes from [django-calendar
 **Filter options on calendar and catalogue:** given a timeframe, certain host or theme of the appointment, the user can filter out the appointments they want to attend the most.
 
 **Fuzzy search: **the user can search for theme/tag, approximation of name, or other attributes rather than an exact host name.
+
+## Inspiration
+MeetCIT project is inspired by the situation that MCIT students want to get to know each other but don't have a platform. The names mentor and mentee are not limited to a one-direction relationship, but also involved the experience sharing (interships/academic work), group-project discussion and network connection. 
+
+## What It Does
+a website where you can meet other CIT students and fellows, ask for academic advice, do mock interview, or just for casual meetup.
