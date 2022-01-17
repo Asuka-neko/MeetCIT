@@ -4,7 +4,7 @@
 
 ### Register and Login System
 
-Works just like any other registration system! Unique and case-sensitive username, email address and complex password are required. At the moment, all website features require login. After logging in, the user will be presented with their profile page.
+Works just like any other registration system! Unique and case-sensitive username, email address and complex password are required. After logging in, the user will be presented with their profile page.
 
 ### Host/Attendee Appointment System
 
