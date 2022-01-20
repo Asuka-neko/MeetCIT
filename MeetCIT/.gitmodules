@@ -1,0 +1,4 @@
+[submodule "MeetCIT"]
+    path = MeetCIT
+    url = https://github.com/Asuka-neko/MeetCIT
+    branch = deploy
